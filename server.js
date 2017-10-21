@@ -6,7 +6,7 @@ var PORT = 3000;
 var app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencode({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
 
