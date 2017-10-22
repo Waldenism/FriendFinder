@@ -17,6 +17,8 @@ module.exports = function(app) {
 		var matchImg;
 		var absoluteDiff = 1000;
 
+		console.log(uAnswers);
+
 		for(var i = 0; i < friends.length; i++) {
 			var diff = 0;
 
@@ -26,17 +28,19 @@ module.exports = function(app) {
 				// console.log(friends[i].scores[j]);
 				// console.log(uAnswers[j]);
 				diff += Math.abs(friends[i].scores[j] - uAnswers[j]);
-				console.log("diff: " + diff);
+				// console.log("diff: " + diff);
+				// console.log('INNER for loop increment');
 			}
 
 			
 
 			if (diff < absoluteDiff) {
+
 				absoluteDiff = diff;
-				console.log("absoluteDiff: " + absoluteDiff)
 				matchName = friends[i].name;
 				matchImg = friends[i].photo;
 			}
+		// console.log('OUTER for loop increment');
 		}
 
 		friends.push(uInput);

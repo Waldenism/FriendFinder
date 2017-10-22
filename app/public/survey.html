@@ -139,6 +139,7 @@
 	<div id="modal" class="modal">
 		<div class='modal-content'>
 			<h4> We think a good friend for you might be</h4>
+			<span class="close">&times;</span>
 			<h5 id='userMatch'></h5>
 			<img id='userMatchImage'>
 		</div>
@@ -168,16 +169,17 @@
 				name: $('#nameInput').val().trim(),
 				photo: $('#photoInput').val().trim(),
 				scores:[
-					$('input[name=q1]').val().trim(),
-					$('input[name=q2]').val().trim(),
-					$('input[name=q3]').val().trim(),
-					$('input[name=q4]').val().trim(),
-					$('input[name=q5]').val().trim(),
-					$('input[name=q6]').val().trim(),
-					$('input[name=q7]').val().trim(),
-					$('input[name=q8]').val().trim(),
-					$('input[name=q9]').val().trim(),
-					$('input[name=q10]').val().trim()
+					// $("#q1 < input[name='q1']").attr('checked', 'checked').val(),
+					$("input[name='q1']:checked").val(),
+					$("input[name='q2']:checked").val(),
+					$("input[name='q3']:checked").val(),
+					$("input[name='q4']:checked").val().trim(),
+					$("input[name='q5']:checked").val().trim(),
+					$("input[name='q6']:checked").val().trim(),
+					$("input[name='q7']:checked").val().trim(),
+					$("input[name='q8']:checked").val().trim(),
+					$("input[name='q9']:checked").val().trim(),
+					$("input[name='q10']:checked").val().trim()
 				]
 			};
 
@@ -189,6 +191,10 @@
 		    	// Pop open the modal dialog
       			$('#modal').show();
       		});
+		});
+
+		$('.close').on('click', function(e){
+			$("#modal").hide();
 		});
 	</script>
 </body>
