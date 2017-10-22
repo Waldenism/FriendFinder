@@ -20,16 +20,10 @@ module.exports = function(app) {
 		console.log(uAnswers);
 
 		for(var i = 0; i < friends.length; i++) {
-			var diff = 0;
-
-			
+			var diff = 0;			
 
 			for(var j = 0; j < uAnswers.length; j++) {
-				// console.log(friends[i].scores[j]);
-				// console.log(uAnswers[j]);
 				diff += Math.abs(friends[i].scores[j] - uAnswers[j]);
-				// console.log("diff: " + diff);
-				// console.log('INNER for loop increment');
 			}
 
 			
@@ -40,7 +34,6 @@ module.exports = function(app) {
 				matchName = friends[i].name;
 				matchImg = friends[i].photo;
 			}
-		// console.log('OUTER for loop increment');
 		}
 
 		friends.push(uInput);
