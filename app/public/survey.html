@@ -2,38 +2,42 @@
 <html>
 <head>
 	<title>Friend Finder Survey</title>
+	<!-- <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script> -->
 </head>
 <body>
 	<head>
 		<h1>Survey</h1>
-	</head>
+	
+		<h3>Directions</h3>
+		<p>
+			The following questions will help us find friends similar to you.
+		</p> 
+		<p>
+			Select 1 if you strongly disagree with the statment and 5 if you strongly agree. 
+		</p>
 
+	</head>
+	
 	<form>
-		<input type="text" name="usersName" id="nameInput" placeholder="Name (Required)">
+		
+		<h4> Name and Photo </h4>
+		<input type="text" name="userName" id="nameInput" placeholder="Name (Required)">
 		<br>
 		<input type="text" name="userPhoto" id="photoInput" placeholder="Photo Link (Required)">
-	</form>
-	
 
-	<h3>Directions</h3>
-	<p>
-		The following questions will help us find friends similar to you.
-	</p> 
-	<p>
-		Select 1 if you strongly disagree with the statment and 5 if you strongly agree. 
-	</p>
-	
-	<form>
 
 		<h4>Question 1</h4>
 		<p>You are an early bird</p>
-		<div><fieldset id="q1">
+		<fieldset id="q1">
 			<input type="radio" name="q1" value="1" >1
 			<input type="radio" name="q1" value="2" >2
 			<input type="radio" name="q1" value="3" >3
 			<input type="radio" name="q1" value="4" >4
 			<input type="radio" name="q1" value="5" >5
-		</div></fieldset>
+		</fieldset>
 
 		<h4>Question 2</h4>
 		<p>You consider yourself a conservative</p>
@@ -125,13 +129,20 @@
 			<input type="radio" name="q10" value="5" >5
 		</div></fieldset>
 
+		<button id="submitButton" type="submit">Submit</button>
+
 	</form>
 
-	<button type="submit">Submit</button>
-	
+	<br>
+	<br>
 
-	<br>
-	<br>
+	<div id="modal" class="modal">
+		<div class='modal-content'>
+			<h4> We think a good friend for you might be</h4>
+			<h5 id='userMatch'></h5>
+			<img id='userMatchImage'>
+		</div>
+	</div>
 
 	<ul id="linkies">
 		<li><a href="">API Friends List</a></li>
@@ -139,5 +150,46 @@
 		<li><a href="">GitHub Repo</a></li>
 	</ul>
 
+ <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">    
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#modal").hide();
+		});
+
+		$('#submitButton').on('click', function(event) {
+			event.preventDefault();
+
+			var userInput = {
+				name: $('#nameInput').val().trim(),
+				photo: $('#photoInput').val().trim(),
+				scores:[
+					$('input[name=q1]').val().trim(),
+					$('input[name=q2]').val().trim(),
+					$('input[name=q3]').val().trim(),
+					$('input[name=q4]').val().trim(),
+					$('input[name=q5]').val().trim(),
+					$('input[name=q6]').val().trim(),
+					$('input[name=q7]').val().trim(),
+					$('input[name=q8]').val().trim(),
+					$('input[name=q9]').val().trim(),
+					$('input[name=q10]').val().trim()
+				]
+			};
+
+			$.post('/api/friends', userInput)
+      		.done(function(data) {
+      			$('#userMatch').html(data.matchName);
+		    	$("#userMatchImage").attr("src", data.matchImg);
+
+		    	// Pop open the modal dialog
+      			$('#modal').show();
+      		});
+		});
+	</script>
 </body>
 </html>
