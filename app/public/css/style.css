@@ -236,5 +236,10 @@ body {
     body {
         margin: 20px;
     }
+
+    #formWrapper{
+    background-color: white;
+    min-width: 100px
+}
 }
 
