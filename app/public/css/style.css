@@ -1,4 +1,6 @@
 #container {
+    background-image: none;
+    background-color: white;
     padding: 20px;
     border: solid black 2px;
     display:flex;
@@ -9,19 +11,28 @@
 
 h1 {
     font-family: 'Gloria Hallelujah', cursive;
-    font-size: 40px;
+    font-size: 4em;
+    border: solid black 2px;
+    padding:13px;
+    background-color: lightgray;
+}
+
+#formWrapper{
+    background-color: white;
+    min-width: 300px
 }
 
 #izzle {
     flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+    justify-content: space-between;   
+    align-items: center;
     border: solid lightgray 2px;
     padding: 20px 260px 20px 260px;
 }
 
 #linkies  {
-    display: flex;
+  display: flex;
+  flex-direction: center;
   justify-content: space-between;
   width: 270px;
   padding: 35px;
@@ -29,8 +40,59 @@ h1 {
   opacity: .67;
   color:#777777;
   white-space: nowrap;
+  padding: 20px;
+  background-color: lightgray;
+  margin: 0 auto;
+  align-items: center;
+
 }
 
+#bittle {
+    display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /*align-items: center;*/
+}
+
+#buga {
+    background-color: white;
+    padding: 5px;
+    border: dotted black 1px;
+}
+
+#law {
+    padding: 0px 25px 25px 25px;
+    border-bottom: dotted black 1px;
+    border-top: dotted black 1px;
+}
+
+.row > div {
+    padding: 10px;
+    border: solid black 1px;
+    width: 150px;
+    height: 100px;
+}
+
+body {
+    background-image: url('../images/doodles.png');
+    margin: 50px 150px 50px 150px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#erMes {
+    margin-bottom: 15px;
+    color:red;
+    font-size: 2em;
+}
+
+
+/*modal stuff*/
+/*************************************************************/
 .modal {
     display: none; 
     position: fixed; 
@@ -66,28 +128,9 @@ h1 {
     cursor: pointer;
 }
 
-#bittle {
-    display:flex;
-  flex-direction: row;
-  justify-content: space-around;
-  /*align-items: center;*/
-}
 
-
-
-form div {
-    padding: 10px;
-    border: solid black 1px;
-}
-
-form div div {
-    width: 150px;
-}
-
-
-body {
-    /*font-family: Impact;*/
-}
+/*button stuff*/
+/*************************************************************/
 .button {
     height: 80px;
     width: 180px;
@@ -179,5 +222,19 @@ body {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1d7d12), color-stop(100%,#4fd342)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #1d7d12 0%,#4fd342 100%); /* Chrome10+,Safari5.1+ */
     background: linear-gradient(top, #1d7d12 0%,#4fd342 100%); /* W3C */
+}
+
+
+@media screen and (max-width: 640px) {
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    body {
+        margin: 40px;
+    }
 }
 
