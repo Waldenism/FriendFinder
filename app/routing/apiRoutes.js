@@ -26,8 +26,6 @@ module.exports = function(app) {
 				diff += Math.abs(friends[i].scores[j] - uAnswers[j]);
 			}
 
-			
-
 			if (diff < absoluteDiff) {
 
 				absoluteDiff = diff;

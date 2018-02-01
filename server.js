@@ -7,8 +7,6 @@ var app = express();
 
 
 app.use(express.static(path.join(__dirname, './app/public')));
-// app.use(express.static(path.join('./app', 'public')));
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
