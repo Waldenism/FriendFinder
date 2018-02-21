@@ -6,8 +6,7 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 </head>
 
 <body>
@@ -206,8 +205,6 @@
 
 	<br><br>
 
-	
-
 	<div style="border:none" id="submitButton" class="button"><div class="outer"><div class="height"><div class="inner" >Submit</div></div></div></div>
 
 	<div id="modal" class="modal">
@@ -290,14 +287,11 @@
 					};
 
 					$.post('/api/friends', userInput)
-		      		.done(function(data) {
-		      			$('#userMatch').html(data.matchName);
-				    	$("#userMatchImage").attr("src", data.matchImg);
-
-				    	// Pop open the modal dialog
-		      			$('#modal').show();
-		      		});
-
+	      		.done(function(data) {
+	      			$('#userMatch').html(data.matchName);
+			    		$("#userMatchImage").attr("src", data.matchImg);
+	      			$('#modal').show();
+	      		});
 				}
 			}
 
