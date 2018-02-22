@@ -6,9 +6,8 @@ module.exports = function (app) {
   })
 
   app.post('/api/friends', function (req, res) {
-    // user
     var usersInput = req.body
-    var usersAnswers = uInput.scores
+    var usersAnswers = usersInput.scores
 
     var matchName
     var matchImg
@@ -30,6 +29,10 @@ module.exports = function (app) {
 
     friends.push(usersInput)
 
-    res.json({ status: 'OK', matchName: matchName, matchImg: matchImg })
+    res.json({
+      status: 'OK',
+      matchName,
+      matchImg
+    })
   })
 }
