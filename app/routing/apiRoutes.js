@@ -1,41 +1,35 @@
-var path = require('path');
+var friends = require('../data/friends.js')
 
-var friends = require('../data/friends.js');
+module.exports = function (app) {
+  app.get('/api/friends', function (req, res) {
+    res.json(friends)
+  })
 
-module.exports = function(app) {
-	app.get('/api/friends', function(req, res) {
-		res.json(friends);
-	});
+  app.post('/api/friends', function (req, res) {
+    // user
+    var usersInput = req.body
+    var usersAnswers = uInput.scores
 
-	app.post('/api/friends', function(req, res) {
-		
-		//user
-		var uInput = req.body;
-		var uAnswers = uInput.scores;
+    var matchName
+    var matchImg
+    var absoluteDiff = 1000
 
-		var matchName;
-		var matchImg;
-		var absoluteDiff = 1000;
+    for (var i = 0; i < friends.length; i++) {
+      var diff = 0
 
-		console.log(uAnswers);
+      for (var j = 0; j < usersAnswers.length; j++) {
+        diff += Math.abs(friends[i].scores[j] - usersAnswers[j])
+      }
 
-		for(var i = 0; i < friends.length; i++) {
-			var diff = 0;			
+      if (diff < absoluteDiff) {
+        absoluteDiff = diff
+        matchName = friends[i].name
+        matchImg = friends[i].photo
+      }
+    }
 
-			for(var j = 0; j < uAnswers.length; j++) {
-				diff += Math.abs(friends[i].scores[j] - uAnswers[j]);
-			}
+    friends.push(usersInput)
 
-			if (diff < absoluteDiff) {
-
-				absoluteDiff = diff;
-				matchName = friends[i].name;
-				matchImg = friends[i].photo;
-			}
-		}
-
-		friends.push(uInput);
-
-		res.json({ status: 'OK', matchName: matchName, matchImg:matchImg });
-	});
-};
+    res.json({ status: 'OK', matchName: matchName, matchImg: matchImg })
+  })
+}
